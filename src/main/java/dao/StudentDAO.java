@@ -80,6 +80,10 @@ public class StudentDAO {
         student.setGender_id(rs.getInt("gender_id"));
         student.setGrade_id(rs.getInt("grade_id"));
 
+        //Move the below into their own DAOs and get it from that
+        //This would also involve altering the SELECT statements for the search; it would just search student without any joins
+        //Then GenderDAO and GradeDAO would search their own, and you would link them from there as with the code below
+
         gender.setId(rs.getInt("gender_id"));
         gender.setGender(rs.getString("gender"));
         student.setGender(gender);
