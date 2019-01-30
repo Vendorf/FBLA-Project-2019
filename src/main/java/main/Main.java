@@ -1,6 +1,11 @@
 package main;
 
+import controller.HomeController;
+import dao.GenderDAO;
+import dao.GradeDAO;
 import dao.StudentDAO;
+import entities.Gender;
+import entities.Grade;
 import entities.Student;
 import event.EventManager;
 import event.EventType;
@@ -13,18 +18,31 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import view.CoursesView;
+import view.BooksView;
 import view.HomeView;
 import view.MenuView;
 import view.NavigatorView;
+
+/*
+* TO DO:
+- Add student window
+- Remove student button
+- Add books window
+- Add codes window
+- Assign codes to student window
+- Reporting
+*
+* */
 
 public class Main extends Application {
 
     private Pane mainView;
     private HomeView hv;
-    private CoursesView cv;
+    private BooksView cv;
     private HBox hContainer;
     private VBox vContainer;
+
+    private HomeController homeController;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -33,8 +51,12 @@ public class Main extends Application {
         vContainer = new VBox();
         hContainer = new HBox();
         NavigatorView nv = new NavigatorView();
-        hv = new HomeView();
-        cv = new CoursesView();
+        //hv = new HomeView();
+
+        homeController = new HomeController();
+
+        hv = homeController.getHomeView();
+        cv = new BooksView();
 
 //
 
@@ -44,6 +66,13 @@ public class Main extends Application {
 
 
         mainView = hv;
+
+
+//        Button myButton = new Button("ajslkfd");
+//        mainView.getChildren().add(myButton);
+//        myButton.setLayoutX(50);
+//        myButton.setLayoutY(50);
+
 
         hContainer.getChildren().addAll(nv, mainView);
         hContainer.setHgrow(mainView, Priority.ALWAYS);
@@ -78,6 +107,7 @@ public class Main extends Application {
         //Logger.getGlobal().log(Level.ALL, path + "     " + (getClass().getResource(path) == null ? "NULL" : "working"));
         scene.getStylesheets().add(getClass().getResource(path).toExternalForm());
         stage.setScene(scene);
+        stage.setTitle("FBLA E-book Manager");
         stage.show();
 
         EventManager.attach(EventType.HOME_CLICKED, new Observer() {
@@ -91,7 +121,7 @@ public class Main extends Application {
             }
         });
 
-        EventManager.attach(EventType.COURSES_CLICKED, new Observer() {
+        EventManager.attach(EventType.BOOKS_CLICKED, new Observer() {
             @Override
             public void doEvent() {
                 hContainer.getChildren().removeAll(mainView);
@@ -109,6 +139,14 @@ public class Main extends Application {
         }
         System.out.println();
         System.out.println(StudentDAO.searchStudents("8340256").toString());
+        System.out.println();
+        for(Grade grade : GradeDAO.searchGrades()){
+            System.out.println(grade.toString());
+        }
+        System.out.println();
+        for(Gender gender : GenderDAO.searchGenders()){
+            System.out.println(gender.toString());
+        }
 
     }
 

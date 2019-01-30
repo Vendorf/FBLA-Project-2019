@@ -1,0 +1,526 @@
+/*Dark Grey: #393939 – Dark designs take a little bit more fore-thought but can provide tons of contrast if used well.*/
+
+/*Deep Orange: #FF5A09 – With different shades of oranges, there is depth and gradient, without venturing into totally new colors.*/
+
+/*Light Orange: #ec7f37 – Utilizing illustrative elements, requires a bit of flexibility for the natural lightness and darkness to contour objects.*/
+
+/*Orange Yellow: #be4f0c – Using on color over on the color wheel can keep the palette looking classy, bold and restrained.*/
+
+
+.menu-bar{
+    -fx-background-color: #616161;
+    /*-fx-border-width: 0;*/
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #1e1e1e;
+}
+.menu .label{
+    -fx-text-fill: white;
+}
+.menu:hover{
+    -fx-background-color: #ec7f37;
+}
+/*.menu-item{*/
+/*-fx-background-color: rgba(29,85,133,0.5);*/
+/*}*/
+
+/*.context-menu{*/
+/*-fx-background-insets: 0;*/
+/*-fx-padding: 0;*/
+/*-fx-background-radius: 0;*/
+/*-fx-background-color: white;*/
+/*}*/
+
+
+.img-view{
+    -fx-background-color: #393939;
+}
+
+.split-pane{
+    /*-fx-background-color: #393939;*/
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+
+}
+
+
+
+/*Table View*/
+
+.table-view{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.table-view .filler{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#424141 0%, #424141 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+
+/*This is where the divider line between headaers is kept*/
+.table-view .column-header {
+    -fx-background-color: transparent;
+    /*-fx-border-width: 0 2 0 1;*/
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: #393939;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-view .column-drag-header{
+    -fx-background-color: #ec7f37;
+
+}
+
+/*ERROR SOURCE ID'd*/
+.table-row-cell{
+    -fx-background-color: #616161;
+    -fx-table-cell-border-color: #393939;
+    -fx-border-color: #393939;
+    /*this is what causes misalignment*/
+    -fx-background-insets: 0, 0 0 1 0;
+    /*-fx-padding: 0; !* 0 *!*/
+    -fx-padding: -1;
+    /*this fixes the misalignment... dirty but no better solution, this is an FX bug*/
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-table-cell-border-color: #393939;
+    -fx-border-color: #393939;
+    -fx-background-insets: 0, 0 0 1 0;
+    /*-fx-padding: 0;*/
+    -fx-padding: -1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #ec7f37;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view .empty-table{
+    -fx-background-color: #393939;
+}
+
+/**/
+
+.tree-table-view .empty-table{
+    -fx-background-color: #393939;
+    -fx-text-fill: white;
+}
+
+.tree-table-cell{
+    -fx-text-fill: white;
+}
+
+.tree-table-view{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.tree-table-view .filler{
+    -fx-background-color: transparent;
+}
+
+.tree-table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.tree-table-view .column-header-background{
+    -fx-background-color: linear-gradient(#424141 0%, #424141 100%);
+}
+
+.tree-table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+
+/*This is where the divider line between headaers is kept*/
+.tree-table-view .column-header {
+    -fx-background-color: transparent;
+    /*-fx-border-width: 0 2 0 1;*/
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: #393939;
+}
+
+.tree-table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.tree-table-view .column-drag-header{
+    -fx-background-color: #ec7f37;
+
+}
+
+/*ERROR SOURCE ID'd*/
+.tree-table-row-cell{
+    -fx-background-color: #616161;
+    -fx-table-cell-border-color: #393939;
+    -fx-border-color: #393939;
+    /*this is what causes misalignment*/
+    -fx-background-insets: 0, 0 0 1 0;
+    /*-fx-padding: 0; !* 0 *!*/
+    -fx-padding: -1;
+    /*this fixes the misalignment... dirty but no better solution, this is an FX bug*/
+}
+
+.tree-table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-table-cell-border-color: #393939;
+    -fx-border-color: #393939;
+    -fx-background-insets: 0, 0 0 1 0;
+    /*-fx-padding: 0;*/
+    -fx-padding: -1;
+}
+
+.tree-table-row-cell:selected {
+    -fx-background-color: #ec7f37;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+/**/
+
+
+
+
+.navigator .main{
+    -fx-background-color: #FF5A09;
+    /*-fx-border-width: 0 2 0 0;*/
+    /*-fx-border-color: rgb(23,68,107);*/
+}
+
+.navigator .button{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    /*-fx-border-width: 2;*/
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+    /*-fx-border-color: darkgray;*/
+}
+
+/*.navigator .button:pressed{*/
+/*-fx-background-color: lightgrey;*/
+/*}*/
+
+.navigator .button:hover{
+    -fx-background-color: #be4f0c;
+}
+
+.navigator .button:last-selected{
+    -fx-background-color: #ec7f37;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.navigator .button:last-selected:hover{
+    -fx-background-color: #be4f0c;
+}
+
+.student-table-view .text-field{
+    -fx-background-color: transparent;
+    /*rgba(255,255,255,0.5);*/
+    /*-fx-border-radius: 0;*/
+    /*-fx-background-radius: 0;*/
+    /*-fx-border-insets: 0;*/
+    /*-fx-background-insets: 0;*/
+    /*-fx-padding: 0;*/
+}
+
+.student-table-view .context-menu{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: white;
+}
+
+/*.student-table-view .menu-bar{*/
+/*-fx-background-color: transparent;*/
+/*-fx-border-width: 0;*/
+/*}*/
+.student-table-view .menu-item{
+    -fx-background-color: transparent;
+}
+
+.student-table-view .menu-item > .label{
+    -fx-text-fill: white;
+}
+
+.student-table-view .menu-item:hover{
+    -fx-background-color: #ec7f37;
+}
+
+.student-table-view .menu-item:focused{
+    -fx-background-color: #ec7f37;
+}
+
+.date-picker > .text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+}
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color: transparent;
+    /*-fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;*/
+    /*-fx-background-radius: 2 0 0 2, 1 0 0 1, 0;*/
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+.date-picker{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+
+.date-picker > .arrow-button{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+.date-picker > .arrow-button:hover{
+    -fx-background-color: #ec7f37;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+.date-picker-popup{
+    -fx-background-color: #393939;
+}
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > * > .spinner > .label {
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > * > .spinner:hover{
+    -fx-background-color: transparent;
+}
+
+
+.date-picker-popup > * > .date-cell {
+    -fx-background-color: #616161;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+.date-picker-popup > * > .date-cell:hover{
+    -fx-background-color: #ec7f37;
+}
+
+
+.date-picker-popup > * > .selected{
+    -fx-background-color: #ec7f37;
+}
+
+.date-picker-popup > * > .day-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+.date-picker-popup > * > .date-cell.selected {
+    -fx-background-color: #ec7f37;
+}
+
+.date-picker-popup > * > .spinner > .button{
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > * > .spinner > .button:hover{
+    -fx-background-color: #ec7f37;
+}
+
+.date-picker-popup > * {
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > .calendar-grid {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.split-pane{
+    -fx-background-color:transparent;
+    -fx-padding: 0;
+}
+
+.split-pane .split-pane-divider{
+    -fx-background-color: #1e1e1e;
+}
+
+.split-pane .split-pane-divider:hover{
+    -fx-background-color: #ec7f37;
+}
+
+
+.add-student-view .choice-box{
+    -fx-background-color: #393939;
+    /*-fx-background-insets: 0;*/
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-background-insets: 0 0 0 2;
+}
+
+.add-student-view .context-menu{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: white;
+}
+
+.add-student-view .menu-item{
+    -fx-background-color: transparent;
+}
+
+.add-student-view .menu-item > .label{
+    -fx-text-fill: white;
+}
+
+.add-student-view .menu-item:hover{
+    -fx-background-color: #ec7f37;
+}
+
+.add-student-view .menu-item:focused{
+    -fx-background-color: #ec7f37;
+}
+
+.add-student-view .text-field{
+    -fx-background-color: #393939;
+    /*rgba(255,255,255,0.5);*/
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0 2 0 0;
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+    /*-fx-padding: 0;*/
+}
+
+.add-student-view .date-picker > .text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+}
+
+.home-view .button {
+    -fx-background-color: #393939;
+    -fx-text-fill: white;
+    -fx-background-insets: 0 2 0 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+.home-view .button:hover {
+    -fx-background-color: #ec7f37;
+}
+
+.home-view{
+    -fx-background-color: #616161;
+}
+
+.home-view .label{
+    -fx-text-fill: white;
+}
+
+
+
+/********/
+
+.toggle-switch .label{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    /*-fx-border-width: 2;*/
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+}
+
+.toggle-switch .label:right-toggle{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    /*-fx-border-width: 2;*/
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+}
+
+.toggle-switch .button{
+    -fx-background-color: #393939;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    /*-fx-border-width: 2;*/
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+    /*-fx-border-color: darkgray;*/
+}
+
+/*.navigator .button:pressed{*/
+/*-fx-background-color: lightgrey;*/
+/*}*/
+
+.toggle-switch .button:hover{
+    -fx-background-color: #be4f0c;
+}
+
+.toggle-switch HBox{
+    -fx-background-color: #393939;
+}

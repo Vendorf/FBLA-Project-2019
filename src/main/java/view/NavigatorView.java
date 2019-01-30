@@ -19,7 +19,7 @@ public class NavigatorView extends Pane {
 
     private VBox mainRoot;
     private Button homeButton;
-    private Button coursesButton;
+    private Button booksButton;
     private Button studentsButton;
     private Button eItemsButton;
 
@@ -38,7 +38,7 @@ public class NavigatorView extends Pane {
         initLogo();
 
 
-        mainRoot.getChildren().addAll(logoView, homeButton, coursesButton, studentsButton, eItemsButton);
+        mainRoot.getChildren().addAll(logoView, homeButton, booksButton, studentsButton, eItemsButton);
         mainRoot.prefWidthProperty().bind(this.widthProperty());
         mainRoot.prefHeightProperty().bind(this.heightProperty());
 
@@ -53,19 +53,19 @@ public class NavigatorView extends Pane {
 
     private void initButtons() {
         homeButton = new Button("Home");
-        coursesButton = new Button("Courses");
+        booksButton = new Button("Books");
         studentsButton = new Button("Students");
         eItemsButton = new Button("E-Items");
 
         lastSelectedButton = homeButton;
 
         homeButton.setPrefHeight(BUTTON_HEIGHT);
-        coursesButton.setPrefHeight(BUTTON_HEIGHT);
+        booksButton.setPrefHeight(BUTTON_HEIGHT);
         studentsButton.setPrefHeight(BUTTON_HEIGHT);
         eItemsButton.setPrefHeight(BUTTON_HEIGHT);
 
         homeButton.prefWidthProperty().bind(mainRoot.widthProperty());
-        coursesButton.prefWidthProperty().bind(mainRoot.widthProperty());
+        booksButton.prefWidthProperty().bind(mainRoot.widthProperty());
         studentsButton.prefWidthProperty().bind(mainRoot.widthProperty());
         eItemsButton.prefWidthProperty().bind(mainRoot.widthProperty());
 
@@ -80,11 +80,11 @@ public class NavigatorView extends Pane {
             }
         });
 
-        coursesButton.setOnAction(new EventHandler<ActionEvent>() {
+        booksButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                setActive(coursesButton);
-                EventManager.post(EventType.COURSES_CLICKED);
+                setActive(booksButton);
+                EventManager.post(EventType.BOOKS_CLICKED);
             }
         });
 
@@ -120,6 +120,8 @@ public class NavigatorView extends Pane {
         logoView.setPreserveRatio(true);
         logoView.setFitHeight(84);
         logoView.fitWidthProperty().bind(mainRoot.widthProperty());
+
+        logoView.getStyleClass().add("img-view");
 
     }
 

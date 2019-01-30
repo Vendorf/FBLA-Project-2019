@@ -97,3 +97,13 @@
 .navigator .button:last-selected:hover{
     -fx-background-color: lightgray;
 }
+
+.student-table-view .text-field{
+    -fx-background-color: transparent;
+    /*rgba(255,255,255,0.5);*/
+    /*-fx-border-radius: 0;*/
+    /*-fx-background-radius: 0;*/
+    /*-fx-border-insets: 0;*/
+    /*-fx-background-insets: 0;*/
+    /*-fx-padding: 0;*/
+}

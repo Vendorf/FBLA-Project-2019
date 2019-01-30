@@ -1,0 +1,99 @@
+.menu-bar{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.menu-item{
+    -fx-background-color: rgba(29,85,133,0.5);
+}
+
+.context-menu{
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+/*Table View*/
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view .filler{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#42413D 0%, #42413D 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #B2AFAC;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #959492;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #FFCE2B;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+/**/
+
+.navigator .main{
+    -fx-background-color: #42413D;
+    /*-fx-border-width: 0 2 0 0;*/
+    /*-fx-border-color: rgb(23,68,107);*/
+}
+
+.navigator .button{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    /*-fx-border-width: 2;*/
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+    /*-fx-border-color: darkgray;*/
+}
+
+/*.navigator .button:pressed{*/
+/*-fx-background-color: lightgrey;*/
+/*}*/
+
+.navigator .button:hover{
+    -fx-background-color: #B2AFAC;
+}
+
+.navigator .button:last-selected{
+    -fx-background-color: #FFCE2B;
+    -fx-text-fill: rgb(56,144,206);
+}
+
+.navigator .button:last-selected:hover{
+    -fx-background-color: #FFFFFB;
+}

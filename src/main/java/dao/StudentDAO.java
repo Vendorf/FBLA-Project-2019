@@ -22,13 +22,15 @@ public class StudentDAO {
     //FK: gender_id, grade_id
 
 
+    private StudentDAO(){}
 
     //*******************************
     //SELECT a Student
     //*******************************
     public static Student searchStudents (String studentId) throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
-        String selectStmt = "SELECT students.id, student_id, first_name, last_name, dob, gender_id, grade_id, genders.gender, grade_level.grade FROM students INNER JOIN genders on genders.id = gender_id INNER JOIN grade_level on grade_level.id = grade_id WHERE student_id=" + studentId;
+        String selectStmt = "SELECT students.id, student_id, first_name, last_name, dob, gender_id, grade_id FROM students WHERE student_id = " + studentId;
+                //"SELECT students.id, student_id, first_name, last_name, dob, gender_id, grade_id, genders.gender, grade_level.grade FROM students INNER JOIN genders on genders.id = gender_id INNER JOIN grade_level on grade_level.id = grade_id WHERE student_id=" + studentId;
 
         //Execute SELECT statement
         try {
@@ -84,11 +86,16 @@ public class StudentDAO {
         //This would also involve altering the SELECT statements for the search; it would just search student without any joins
         //Then GenderDAO and GradeDAO would search their own, and you would link them from there as with the code below
 
-        gender.setId(rs.getInt("gender_id"));
-        gender.setGender(rs.getString("gender"));
+//        gender.setId(rs.getInt("gender_id"));
+//        gender.setGender(rs.getString("gender"));
+        gender = GenderDAO.searchGender(rs.getString("gender_id"));
         student.setGender(gender);
-        grade.setId(rs.getInt("grade_id"));
-        grade.setGrade(rs.getString("grade"));
+
+        grade = GradeDAO.searchGrade(rs.getString("grade_id"));
+
+
+        //grade.setId(rs.getInt("grade_id"));
+        //grade.setGrade(rs.getString("grade"));
         student.setGrade(grade);
 
 
@@ -100,7 +107,8 @@ public class StudentDAO {
     //*******************************
     public static ObservableList<Student> searchStudents () throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
-        String selectStmt = "SELECT students.id, student_id, first_name, last_name, dob, gender_id, grade_id, genders.gender, grade_level.grade FROM students INNER JOIN genders on genders.id = gender_id INNER JOIN grade_level on grade_level.id = grade_id";
+        String selectStmt = //"SELECT students.id, student_id, first_name, last_name, dob, gender_id, grade_id, genders.gender, grade_level.grade FROM students INNER JOIN genders on genders.id = gender_id INNER JOIN grade_level on grade_level.id = grade_id";
+                "SELECT students.id, student_id, first_name, last_name, dob, gender_id, grade_id FROM students";
 
 //                "SELECT " +
 //                "id," +
@@ -159,6 +167,32 @@ public class StudentDAO {
         }
         //return empList (ObservableList of Employees)
         return studentList;
+    }
+
+    public static void updateStudent (Student student) throws SQLException {
+
+        //check if unique values still unique first by SELECT statement
+        //check if grade and gender valid
+
+        String updateStmt = String.format("UPDATE students SET student_id = %d, first_name = '%s', last_name = '%s', dob = '%s', gender_id = %d, grade_id = %d WHERE id = %d",
+                student.getStudent_id(),
+                student.getFirst_name(),
+                student.getLast_name(),
+                student.getDob(),
+                student.getGender().getId(),
+                student.getGrade().getId(),
+                student.getId());
+
+
+                //"UPDATE students SET student_id = " + student.getStudent_id() + ", first_name = " + student.getFirst_name() + ", last_name = " + student.getLast_name() + ", dob = " + student.getDob() + ", gender_id = " + student.getGender().getId() + ", grade_id = " + student.getGrade_id() + " WHERE id = " + student.getId();
+
+        try{
+            DatabaseManager.executeUpdate(updateStmt);
+        }catch (SQLException e){
+            //LOG
+            System.out.println("error on update with statement:\n" + updateStmt);
+            throw e;
+        }
     }
 
 //    //*************************************

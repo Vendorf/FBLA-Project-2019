@@ -73,6 +73,20 @@ public class DatabaseManager {
 
     public static void executeUpdate(String updateQuery) throws SQLException{
 
+        Statement updateStatement = null;
+        try{
+            connect();
+            updateStatement = connection.createStatement();
+            updateStatement.executeUpdate(updateQuery);
+        }catch (SQLException e){
+            //LOG
+            throw e;
+        } finally {
+            if(updateStatement != null){
+                updateStatement.close();
+            }
+            disconnect();
+        }
 
     }
 

@@ -42,4 +42,9 @@ public class Grade {
     public void setGrade(String grade) {
         this.grade.set(grade);
     }
+
+    @Override
+    public String toString(){
+        return this.id.get() + " | " + this.grade.get();
+    }
 }

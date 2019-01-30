@@ -5,5 +5,6 @@ package event;
  */
 public enum EventType {
     HOME_CLICKED,
-    COURSES_CLICKED
+    BOOKS_CLICKED,
+    STUDENT_SELECTED
 }

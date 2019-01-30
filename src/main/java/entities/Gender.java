@@ -41,4 +41,9 @@ public class Gender {
     public void setGender(String gender) {
         this.gender.set(gender);
     }
+
+    @Override
+    public String toString(){
+        return this.id.get() + " | " + this.gender.get();
+    }
 }
