@@ -12,16 +12,14 @@ import event.EventType;
 import event.Observer;
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import view.BooksView;
-import view.HomeView;
-import view.MenuView;
-import view.NavigatorView;
+import view.*;
 
 /*
 * TO DO:
@@ -31,6 +29,12 @@ import view.NavigatorView;
 - Add codes window
 - Assign codes to student window
 - Reporting
+
+Get all but reporting done by Wednesday
+
+Get reporting done on weekend
+
+Then fumble with database import/export
 *
 * */
 
@@ -43,6 +47,8 @@ public class Main extends Application {
     private VBox vContainer;
 
     private HomeController homeController;
+
+    private AssignCodesView acv;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -58,6 +64,7 @@ public class Main extends Application {
         hv = homeController.getHomeView();
         cv = new BooksView();
 
+        acv = new AssignCodesView();
 //
 
         MenuView mv = new MenuView();
@@ -126,6 +133,17 @@ public class Main extends Application {
             public void doEvent() {
                 hContainer.getChildren().removeAll(mainView);
                 mainView = cv;
+                hContainer.setHgrow(mainView, Priority.ALWAYS);
+                mainView.prefHeightProperty().bind(hContainer.heightProperty());
+                hContainer.getChildren().add(mainView);
+            }
+        });
+
+        EventManager.attach(EventType.ASSIGN_CLICKED, new Observer() {
+            @Override
+            public void doEvent() {
+                hContainer.getChildren().removeAll(mainView);
+                mainView = acv;
                 hContainer.setHgrow(mainView, Priority.ALWAYS);
                 mainView.prefHeightProperty().bind(hContainer.heightProperty());
                 hContainer.getChildren().add(mainView);

@@ -15,7 +15,7 @@ import javafx.scene.control.TableCell;
 
 //THIS CLASS IS STRAIGHT GARBAGE
 
-//Rewrite it on your own rather than use this shit
+//Rewrite it rather than use this shit
 
 
 

@@ -2,6 +2,7 @@ package dao;
 
 import database.DatabaseManager;
 import entities.RedemptionInfo;
+import entities.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -92,7 +93,7 @@ public class RedemptionInfoDAO {
             redemptionInfo.setStudent_id_assign_date(java.sql.Date.valueOf(rs.getString("student_id_assign_date")));
         } catch (IllegalArgumentException e) {
             //LOG
-            System.out.println("bullshit happened");
+            System.out.println("Error building date");
         }
 
         return redemptionInfo;
@@ -123,6 +124,31 @@ public class RedemptionInfoDAO {
         }
         //return empList (ObservableList of Employees)
         return redemptionInfos;
+    }
+
+    public static ObservableList<RedemptionInfo> getUnnassignedCodes() throws SQLException {
+
+        String selectStmt = "SELECT id, book_id, redemption_code, student_id, student_id_assign_date FROM redemption_codes WHERE student_id IS NULL OR student_id = ''";
+
+        return doMultipleSelectStatement(selectStmt);
+
+    }
+
+    public static void assignRedemptionCodes(Student student, Date assignDate, RedemptionInfo... redemptionInfos) throws SQLException { //maybe just do redemptioninfos and date; set it beforehand and then update
+
+        String updateStmt = "UPDATE redemption_codes SET student_id = %d, student_id_assign_date = '%s' WHERE id = %d";
+
+        for(RedemptionInfo redemptionInfo : redemptionInfos){
+            try{
+                DatabaseManager.executeUpdate(String.format(updateStmt,
+                        student.getStudent_id(),
+                        assignDate,
+                        redemptionInfo.getId()));
+            }catch (SQLException e){
+                System.out.print("Error occurred while UPDATE Operation: " + e);
+                throw e;
+            }
+        }
     }
 
 //    //*************************************

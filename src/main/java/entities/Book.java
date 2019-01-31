@@ -11,12 +11,16 @@ public class Book {
     private StringProperty author;
     private IntegerProperty publication_year;
 
+    private Category category;
+
     public Book(){
         this.id = new SimpleIntegerProperty();
         this.category_id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
         this.author = new SimpleStringProperty();
         this.publication_year = new SimpleIntegerProperty();
+
+        this.category = new Category();
     }
 
     public int getId() {
@@ -77,5 +81,18 @@ public class Book {
 
     public void setPublication_year(int publication_year) {
         this.publication_year.set(publication_year);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString(){
+        return name.get() + " | " + author.get() + " | " + publication_year.get() + " | " + category_id.get();
     }
 }

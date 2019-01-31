@@ -1,5 +1,6 @@
 package view;
 
+import controller.CodeAssignController;
 import dao.StudentDAO;
 import entities.Student;
 import javafx.event.ActionEvent;
@@ -11,6 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import main.Main;
 import util.ToggleSwitch;
 
 import java.sql.SQLException;
@@ -98,11 +101,21 @@ public class HomeView extends Pane {
                 }
             }
         });
-        reset.setLayoutX(35);
+        //reset.setLayoutX(35);
+        Button assign = new Button("Assign");
+        assign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Student selected = studentTableView.getSelectionModel().getSelectedItem();
+                if(selected != null){
+                    CodeAssignController codeAssignController = new CodeAssignController(selected);
+                }
+            }
+        });
 
         buttonPane = new HBox();
         final Pane spacer = new Pane();
-        buttonPane.getChildren().addAll(spacer, b, reset);
+        buttonPane.getChildren().addAll(spacer, assign, b, reset);
         //buttonPane.setPrefHeight(30);
         buttonPane.setHgrow(spacer, Priority.ALWAYS);
 

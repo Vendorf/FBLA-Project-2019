@@ -92,6 +92,7 @@ public class NavigatorView extends Pane {
             @Override
             public void handle(ActionEvent actionEvent) {
                 setActive(studentsButton);
+                EventManager.post(EventType.ASSIGN_CLICKED);
             }
         });
 

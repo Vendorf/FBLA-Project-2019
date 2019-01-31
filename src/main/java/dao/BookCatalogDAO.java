@@ -2,6 +2,7 @@ package dao;
 
 import database.DatabaseManager;
 import entities.Book;
+import entities.Category;
 import entities.RedemptionInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,11 +56,15 @@ public class BookCatalogDAO {
 
     private static Book buildBook(ResultSet rs) throws SQLException {
         Book book = new Book();
+        Category category = new Category();
         book.setId(rs.getInt("id"));
         book.setCategory_id(rs.getInt("category_id"));
         book.setName(rs.getString("name"));
         book.setAuthor(rs.getString("author"));
         book.setPublication_year(rs.getInt("publication_year"));
+
+        category = CategoryDAO.searchCategories(rs.getString("category_id"));
+        book.setCategory(category);
 
         return book;
     }
@@ -105,6 +110,27 @@ public class BookCatalogDAO {
         }
         //return empList (ObservableList of Employees)
         return books;
+    }
+
+    public static void updateBook (Book book) throws SQLException {
+
+        //check if unique values still unique first by SELECT statement
+        //check if grade and gender valid
+
+        String updateStmt = String.format("UPDATE book_catalog SET category_id = %d, name = '%s', author = '%s', publication_year = %d WHERE id = %d",
+                book.getCategory_id(),
+                book.getName(),
+                book.getAuthor(),
+                book.getPublication_year(),
+                book.getId());
+
+        try{
+            DatabaseManager.executeUpdate(updateStmt);
+        }catch (SQLException e){
+            //LOG
+            System.out.println("error on update with statement:\n" + updateStmt);
+            throw e;
+        }
     }
 
 //    //*************************************

@@ -1,7 +1,9 @@
 package view;
 
 import dao.BookCatalogDAO;
+import dao.CategoryDAO;
 import entities.Book;
+import entities.Category;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -10,13 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.util.StringConverter;
+
+import java.sql.SQLException;
 
 public class AddBookView extends Pane {
 
     private TextField bookNameField;
     private TextField authorField;
     private TextField yearField;
-    private ChoiceBox/*<Category>*/ categoryChoiceBox;
+    private ChoiceBox<Category> categoryChoiceBox;
 
     private Button addButton;
     private Button cancelButton;
@@ -40,22 +45,22 @@ public class AddBookView extends Pane {
 
 
         categoryChoiceBox = new ChoiceBox<>();
-//        categoryChoiceBox.setConverter(new StringConverter<Category>() {
-//            @Override
-//            public String toString(Category category) {
-//                return category.getCatagory();
-//            }
-//
-//            @Override
-//            public Category fromString(String s) {
-//                return null;
-//            }
-//        });
-//        try {
-//            categoryChoiceBox.setItems(CategoryDAO.searchCategories());
-//        } catch (SQLException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        categoryChoiceBox.setConverter(new StringConverter<Category>() {
+            @Override
+            public String toString(Category category) {
+                return category.getCategory();
+            }
+
+            @Override
+            public Category fromString(String s) {
+                return null;
+            }
+        });
+        try {
+            categoryChoiceBox.setItems(CategoryDAO.searchCategories());
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         horizontalStore = new HBox();
         horizontalStore.getChildren().setAll(bookNameField, authorField, yearField, categoryChoiceBox);
@@ -87,13 +92,13 @@ public class AddBookView extends Pane {
                     String name = bookNameField.getText();
                     String author = authorField.getText();
                     int year = Integer.parseInt(yearField.getText());
-                    //int categoryId = categoryChoiceBox.getSelectionModel().getSelectedItem().getId();
+                    int categoryId = categoryChoiceBox.getSelectionModel().getSelectedItem().getId();
 
                     Book book = new Book();
                     book.setName(name);
                     book.setAuthor(author);
                     book.setPublication_year(year);
-                    book.setCategory_id(1);
+                    book.setCategory_id(categoryId);
 
                     BookCatalogDAO.insertBook(book);
                     //DB update event
