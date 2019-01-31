@@ -1,7 +1,7 @@
 # FBLA-Project-2019
 Project for 2019 FBLA competition season.
 
-## Topic: Develop a computer program to manage the issuance of e-books to a class of students. Give the class and e-book a name. The program must complete a minimum of the following tasks:
+### Topic: Develop a computer program to manage the issuance of e-books to a class of students. Give the class and e-book a name. The program must complete a minimum of the following tasks:
 - Track student name and grade in school with ability to enter/view/edit.
 - Track the redemption codes for each individual copy of the e-book with ability to enter/view/edit codes.
 - Track the issuance of e-books for a student--a redemption code may be used only once and paired with the student.
